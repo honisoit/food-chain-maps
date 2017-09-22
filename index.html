@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8' />
+    <title></title>
+    <meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
+    <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v0.40.1/mapbox-gl.js'></script>
+    <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v0.40.1/mapbox-gl.css' rel='stylesheet' />
+    <style>
+        body { margin:0; padding:0; }
+        #map { position:absolute; top:0; bottom:0; width:100%; }
+    </style>
+</head>
+<body>
+
+<style>
+    #menu {
+        background: #fff;
+        position: absolute;
+        z-index: 1;
+        top: 10px;
+        right: 10px;
+        border-radius: 3px;
+        width: 120px;
+        border: 1px solid rgba(0,0,0,0.4);
+        font-family: 'Open Sans', sans-serif;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+    }
+
+    #menu a {
+        font-size: 13px;
+        color: #404040;
+        display: block;
+        margin: 0;
+        padding: 0;
+        padding: 10px;
+        text-decoration: none;
+        border-bottom: 1px solid rgba(0,0,0,0.25);
+        text-align: center;
+    }
+
+    #menu a:last-child {
+        border: none;
+    }
+
+    #menu a:hover {
+        background-color: #f8f8f8;
+        color: #404040;
+    }
+
+    #menu a.active {
+        background-color: #3887be;
+        color: #ffffff;
+    }
+
+    #menu a.active:hover {
+        background: #3074a4;
+    }
+</style>
+
+<nav id="menu"></nav>
+<div id="map"></div>
+
+<script>
+mapboxgl.accessToken = 'pk.eyJ1IjoibmF0YXNzaWF6YyIsImEiOiJjajdtdW5xaTEzMmZiMzJucHI5aDA3amdjIn0.KNKEfsBxbUQsOSrw6i9ZxQ';
+var map = new mapboxgl.Map({
+    container: 'map',
+    style: 'mapbox://styles/mapbox/streets-v9',
+    center: [151.094, -33.87], // starting position [lng, lat]
+    zoom: 9 // starting zoom
+});
+
+map.on('load', function () {
+    /*
+     * 1. We need a map.addSource and map.addLayer function for each tileset
+     * 2. Change rich in the first line of addSource to whatever makes sense
+     */
+    map.addSource('rich', {
+        type: 'vector',
+        // 3. Switch the url to the new tileset URL
+        url: 'mapbox://natassiazc.cj7p7871x06fg33qr8xat1j7c-26mzb'
+    });
+    map.addLayer({
+        // 4. Change 'Richest Postcodes' to whatever you want the tilesets button to read
+        'id': 'Richest Postcodes',
+        // 5. Leave type as 'circle' for points; change to 'fill' for a polygon like in the chargrill charlies section
+        'type': 'circle',
+        // 6. Change 'rich' to match what you changed it to in step two for the addSource function
+        'source': 'rich',
+        'layout': {
+            'visibility': 'visible'
+        },
+        // 7. Set the styling by changing the values of the 'circle-radius' and 'circle-color'
+        // If you set the type to 'fill' for a polygon then use 'fill-color' and
+        // 'fill-outline-color' like in the Chargrill Charlies section
+        'paint': {
+            'circle-radius': 8,
+            'circle-color': 'rgba(55,148,179,1)',
+        },
+        // 9. Change 'Richest_Postcodes' to the name of the layer in the tileset
+        'source-layer': 'Richest_Postcodes'
+    });
+
+    map.addSource('chargrill', {
+        type: 'vector',
+        url: 'mapbox://natassiazc.cj7oom8gk3kdu33nps04dzn9b-1fzkr'
+    });
+    map.addLayer({
+        'id': 'Chargrill Charlies',
+        'type': 'fill',
+        'source': 'chargrill',
+        'layout': {
+            'visibility': 'visible'
+        },
+        'paint': {
+            'fill-color': 'rgba(55,148,179,0.4)',
+            'fill-outline-color': 'rgba(55,148,179,1)',
+        },
+        'source-layer': 'Chargrill_Charlies'
+    });
+
+    map.addSource('outback', {
+        type: 'vector',
+        url: 'mapbox://natassiazc.cj7ohmut63iis2wo2op1ygqjv-0zoh1'
+    });
+    map.addLayer({
+        'id': 'Outback Steakhouse',
+        'type': 'circle',
+        'source': 'outback',
+        'layout': {
+            'visibility': 'visible'
+        },
+        'paint': {
+            'circle-radius': 8,
+            'circle-color': 'rgba(55,148,179,1)',
+        },
+        'source-layer': 'Outback_Steakhouse'
+    });
+
+// 9. Add the id you set in step 4 to this list
+var toggleableLayerIds = [ 'Outback Steakhouse', 'Richest Postcodes', 'Chargrill Charlies' ];
+
+for (var i = 0; i < toggleableLayerIds.length; i++) {
+    var id = toggleableLayerIds[i];
+
+    var link = document.createElement('a');
+    link.href = '#';
+    link.className = 'active';
+    link.textContent = id;
+
+    link.onclick = function (e) {
+        var clickedLayer = this.textContent;
+        e.preventDefault();
+        e.stopPropagation();
+
+        var visibility = map.getLayoutProperty(clickedLayer, 'visibility');
+
+        if (visibility === 'visible') {
+            map.setLayoutProperty(clickedLayer, 'visibility', 'none');
+            this.className = '';
+        } else {
+            this.className = 'active';
+            map.setLayoutProperty(clickedLayer, 'visibility', 'visible');
+        }
+    };
+
+    var layers = document.getElementById('menu');
+    layers.appendChild(link);
+}
+});
+
+</script>
+<script type="text/javascript" src="https://pym.nprapps.org/pym.v1.min.js"></script>
+<script type="text/javascript">
+  const pymChild = new pym.Child();
+  pymChild.sendHeight();
+</script>
+</body>
+</html>

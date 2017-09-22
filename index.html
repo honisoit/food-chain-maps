@@ -9,10 +9,10 @@
     <style>
         body { margin:0; padding:0; }
         #map { position:absolute; top:0; bottom:0; width:100%; }
+        
     </style>
 </head>
 <body>
-
 <style>
     #menu {
         background: #fff;
@@ -58,9 +58,11 @@
         background: #3074a4;
     }
 </style>
+<div class="wrapper">
+  <nav id="menu"></nav>
+  <div id="map" style="width:100%;height:auto;"></div>
+</div>
 
-<nav id="menu"></nav>
-<div id="map"></div>
 
 <script>
 mapboxgl.accessToken = 'pk.eyJ1IjoibmF0YXNzaWF6YyIsImEiOiJjajdtdW5xaTEzMmZiMzJucHI5aDA3amdjIn0.KNKEfsBxbUQsOSrw6i9ZxQ';

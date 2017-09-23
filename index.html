@@ -90,7 +90,7 @@ map.on('load', function () {
         // 6. Change 'rich' to match what you changed it to in step two for the addSource function
         'source': 'rich',
         'layout': {
-            'visibility': 'visible'
+            'visibility': 'none'
         },
         // 7. Set the styling by changing the values of the 'circle-radius' and 'circle-color'
         // If you set the type to 'fill' for a polygon then use 'fill-color' and
@@ -112,7 +112,7 @@ map.on('load', function () {
         'type': 'fill',
         'source': 'chargrill',
         'layout': {
-            'visibility': 'visible'
+            'visibility': 'none'
         },
         'paint': {
           'fill-color': 'rgba(247,92,100,0.3)',
@@ -130,7 +130,7 @@ map.on('load', function () {
         'type': 'fill',
         'source': 'outback',
         'layout': {
-            'visibility': 'visible'
+            'visibility': 'none'
         },
         'paint': {
           'fill-color': 'rgba(40,100,100,0.25)',
@@ -149,7 +149,7 @@ map.on('load', function () {
         'type': 'line',
         'source': 'rooster',
         'layout': {
-            'visibility': 'visible'
+            'visibility': 'none'
         },
         'paint': {
         },
@@ -165,7 +165,7 @@ map.on('load', function () {
         'type': 'fill',
         'source': 'wendys',
         'layout': {
-            'visibility': 'visible'
+            'visibility': 'none'
         },
         'paint': {
             'fill-color': 'rgba(282,70,91,0.28)',
@@ -183,7 +183,7 @@ map.on('load', function () {
         'type': 'fill',
         'source': 'hogs',
         'layout': {
-            'visibility': 'visible'
+            'visibility': 'none'
         },
         'paint': {
             'fill-color': 'rgba(105,88,100,0.28)',
@@ -201,7 +201,7 @@ map.on('load', function () {
         'type': 'fill',
         'source': 'bourke',
         'layout': {
-            'visibility': 'visible'
+            'visibility': 'none'
         },
         'paint': {
             'fill-color': 'rgba(307,100,100,0.3)',
@@ -219,7 +219,7 @@ map.on('load', function () {
         'type': 'fill',
         'source': 'harris',
         'layout': {
-            'visibility': 'visible'
+            'visibility': 'none'
         },
         'paint': {
             'fill-color': 'rgba(56,83,32,0.2)',
@@ -237,7 +237,7 @@ map.on('load', function () {
         'type': 'fill',
         'source': 'doughnut',
         'layout': {
-            'visibility': 'visible'
+            'visibility': 'none'
         },
         'paint': {
             'fill-color': 'rgba(114,100,86,0.2)',
@@ -255,7 +255,7 @@ map.on('load', function () {
         'type': 'fill',
         'source': 'jannah',
         'layout': {
-            'visibility': 'visible'
+            'visibility': 'none'
         },
         'paint': {
             'fill-color': 'rgba(185,98,100,0.3)',
@@ -273,7 +273,7 @@ map.on('load', function () {
         'type': 'fill',
         'source': 'rashays',
         'layout': {
-            'visibility': 'visible'
+            'visibility': 'none'
         },
         'paint': {
             'fill-color': 'rgba(354,100,100,0.2)',
@@ -291,7 +291,7 @@ map.on('load', function () {
         'type': 'circle',
         'source': 'messina',
         'layout': {
-            'visibility': 'visible'
+            'visibility': 'none'
         },
         'paint': {
             'circle-radius': 3,
@@ -309,7 +309,7 @@ map.on('load', function () {
         'type': 'circle',
         'source': 'bailey',
         'layout': {
-            'visibility': 'visible'
+            'visibility': 'none'
         },
         'paint': {
             'circle-radius': 3,
@@ -327,7 +327,7 @@ map.on('load', function () {
         'type': 'fill',
         'source': 'iku',
         'layout': {
-            'visibility': 'visible'
+            'visibility': 'none'
         },
         'paint': {
             'fill-color': 'rgba(26,85,96,0.25)',
@@ -345,7 +345,7 @@ map.on('load', function () {
                 'type': 'fill',
                 'source': 'poor',
                 'layout': {
-                    'visibility': 'visible'
+                    'visibility': 'none'
                 },
                 'paint': {
                     'fill-color': 'rgba(151,85,35,0.4)',
@@ -378,7 +378,7 @@ for (var i = 0; i < toggleableLayerIds.length; i++) {
 
     var link = document.createElement('a');
     link.href = '#';
-    link.className = 'active';
+    link.className = '';
     link.textContent = id;
 
     link.onclick = function (e) {

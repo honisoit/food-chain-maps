@@ -354,25 +354,6 @@ map.on('load', function () {
         'source-layer': 'Poorest_Suburbs'
     });
 
-    map.addSource('chatime', {
-        type: 'vector',
-        url: 'mapbox://natassiazc.cj7zfd6uc6boe32qntisdes6m-65pyo'
-    });
-    map.addLayer({
-        'id': 'Cha Time',
-        'type': 'fill',
-        'source': 'chatime',
-        'layout': {
-            'visibility': 'none'
-        },
-        'paint': {
-            'fill-color': 'rgba(0,1,0,0.3)',
-            'fill-outline-color': 'rgba(0,1,0,0.3)',
-        },
-        'source-layer': 'Cha_Time'
-    });
-
-
     map.addSource('vintage', {
         type: 'vector',
         url: 'mapbox://natassiazc.cj7zemh0n1qpk2qs603ou8gbk-5auan'
@@ -412,7 +393,7 @@ map.on('load', function () {
 
 
 // 9. Add the id you set in step 4 to this list
-var toggleableLayerIds = ['The Red Rooster Line', 'Richest Postcodes', 'Poorest Postcodes', 'Chargrill Charlies', 'El Jannah', 'Wendys', 'Doughnut Time', 'Bourke Street Bakery', 'Vintage Cellars', 'Harris Farm Markets','The Source Bulk Foods',  'Iku Wholefood', 'Outback Steakhouse', 'Hogs Australian Steakhouse', 'Rashays', 'Cha Time', 'Gelato Messina', 'Bailey Nelson'];
+var toggleableLayerIds = ['The Red Rooster Line', 'Richest Postcodes', 'Poorest Postcodes', 'Chargrill Charlies', 'El Jannah', 'Wendys', 'Doughnut Time', 'Bourke Street Bakery', 'Vintage Cellars', 'Harris Farm Markets','The Source Bulk Foods',  'Iku Wholefood', 'Outback Steakhouse', 'Hogs Australian Steakhouse', 'Rashays', 'Gelato Messina', 'Bailey Nelson'];
 
 for (var i = 0; i < toggleableLayerIds.length; i++) {
     var id = toggleableLayerIds[i];
